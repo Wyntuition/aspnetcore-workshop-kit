@@ -17,3 +17,7 @@ And add this dependency for MVC,
     ```
     "Microsoft.AspNetCore.Mvc": "1.0.0"
     ```
+
+2. Add meaningful web components 
+
+3. Add model and controller 
