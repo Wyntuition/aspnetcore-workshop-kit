@@ -40,6 +40,4 @@ At this point, you have a minimal ASP.NET Core app set up.
 
 3. Move configuration of the host to the Startup class, per convention. 
 
-
-
 4. End up where you would be in creating an app from an ASP.NET Core template.

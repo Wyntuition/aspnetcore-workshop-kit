@@ -10,12 +10,7 @@ namespace ConsoleApplication
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
-                //.Configure(app => app.Run(context => context.Response.WriteAsync("Hello World, from ASP.NET!")))
-
-                //.UseContentRoot(Directory.GetCurrentDirectory())
-                //UseIISIntegration()
-                .UseStartup<Startup>()
-
+                .Configure(app => app.Run(context => context.Response.WriteAsync("Hello World, from ASP.NET!")))
                 .Build();
 
             host.Run();
