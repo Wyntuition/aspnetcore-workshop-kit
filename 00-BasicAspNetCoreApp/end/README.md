@@ -17,7 +17,7 @@ This will create a basic .NET Core app using the .NET CLI, and then putting the 
     }
     ```
 
-2. Add ASP.NET Core setup code to the Main method (entry point of all .NET Core applications, including ASP.NET Core) in Program.cs
+1. Add ASP.NET Core setup code to the Main method (entry point of all .NET Core applications, including ASP.NET Core) in Program.cs
 
     ```
     // Minimal ASP.NET setup in Main method
@@ -38,6 +38,78 @@ This will create a basic .NET Core app using the .NET CLI, and then putting the 
 
 At this point, you have a minimal ASP.NET Core app set up.
 
-3. Move configuration of the host to the Startup class, per convention. 
+1. Move configuration of the host to the Startup class, per convention. 
 
-4. End up where you would be in creating an app from an ASP.NET Core template.
+    a. Tweak your Program.cs to use a Startup class for ASP.NET Core host configuration:
+
+    ```
+    namespace ConsoleApplication
+    {
+        public class Program
+        {
+            public static void Main(string[] args)
+            {
+                var host = new WebHostBuilder()
+                    .UseKestrel()
+                    //REMOVE THIS: .Configure(app => app.Run(context => context.Response.WriteAsync("Hello World, from ASP.NET!")))
+                    .UseContentRoot(Directory.GetCurrentDirectory())
+                    .UseStartup<Startup>()
+
+                    .Build();
+
+                host.Run();
+            }
+        }
+    }
+
+    ```
+
+    a. Create a class in the project root called Startup.cs
+    a. Add this to your Startup.cs class: 
+
+    ```
+    namespace ConsoleApplication
+    {
+        public class Startup
+        {
+            // This method gets called by the runtime, and is optional. Use this method to add services to the container.
+            // IServiceCollection is a container of service contracts, allowing their injection and setup here (I.E. MVC, Entity Framework). If you add a service that requires substantial setup, wrap it in an extension method of this collection.
+            // Services available at startup: https://docs.asp.net/en/latest/fundamentals/startup.html#services-available-in-startup
+            public void ConfigureServices(IServiceCollection services)
+            {
+                // services.AddMvc();
+            }
+
+            // This method gets called by the runtime, after ConfigureServices, and is required. Use this method to configure the HTTP request pipeline.
+            // IApplicationBuilder is required; provides the mechanisms to configure an application’s request pipeline.
+            public void Configure(IApplicationBuilder app)
+            {
+                app.Run(context => context.Response.WriteAsync("Hello World, from ASP.NET!"));
+            }
+        }
+    }
+    ```
+
+1. Configure the app to use IIS/IIS Express for the web server & set the content root 
+
+Add the following lines (only 2 actual lines of code) after UseStartup in Program.cs Main(): 
+
+    ```
+        .UseContentRoot(Directory.GetCurrentDirectory()) //  The server’s content root determines where it searches for content files, like MVC View files. The default content root is the folder from which the application is run.
+                
+        //  If the app should work with IIS, the UseIISIntegration method should be called as part of building the host. Note that this does not configure a server, like UseKestrel does. 
+        //  To use IIS with ASP.NET Core, you must specify both UseKestrel and UseIISIntegration. Kestrel is designed to be run behind a proxy and should not be deployed directly facing the Internet. 
+        //  UseIISIntegration specifies IIS as the reverse proxy server.
+        .UseIISIntegration() // Reverse proxy using IIS & IIS Express. It does not deal with IServer as Kestrel does. This call configures the port and base path the server should listen on when running behind AspNetCoreModule, and also to capture startup errors. 
+
+    ```
+
+You'll need to add this dependency for IIS integration, to project.json: 
+
+    ```
+    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
+    ```
+
+Then you can restore and run again. 
+
+1. End up where you would be in creating an app from an ASP.NET Core template.
