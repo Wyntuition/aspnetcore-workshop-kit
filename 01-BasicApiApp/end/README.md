@@ -17,7 +17,7 @@ This will create a basic .NET Core app using the .NET CLI, and then putting the 
     }
     ```
 
-2. Add ASP.NET Core setup code to the Main method (entry point of all .NET Core applications, including ASP.NET Core) in Program.cs
+1. Add ASP.NET Core setup code to the Main method (entry point of all .NET Core applications, including ASP.NET Core) in Program.cs
 
     ```
     // Minimal ASP.NET setup in Main method
@@ -38,8 +38,56 @@ This will create a basic .NET Core app using the .NET CLI, and then putting the 
 
 At this point, you have a minimal ASP.NET Core app set up.
 
-3. Move configuration of the host to the Startup class, per convention. 
+1. Move configuration of the host to the Startup class, per convention. 
 
+    a. Tweak your Program.cs to use a Startup class for ASP.NET Core host configuration:
 
+    ```
+    namespace ConsoleApplication
+    {
+        public class Program
+        {
+            public static void Main(string[] args)
+            {
+                var host = new WebHostBuilder()
+                    .UseKestrel()
+                    //REMOVE THIS: .Configure(app => app.Run(context => context.Response.WriteAsync("Hello World, from ASP.NET!")))
+                    .UseContentRoot(Directory.GetCurrentDirectory())
+                    .UseStartup<Startup>()
 
-4. End up where you would be in creating an app from an ASP.NET Core template.
+                    .Build();
+
+                host.Run();
+            }
+        }
+    }
+
+    ```
+
+    a. Create a class in the project root called Startup.cs
+    a. Add this to your Startup.cs class: 
+
+    ```
+    namespace ConsoleApplication
+    {
+        public class Startup
+        {
+            // This method gets called by the runtime, and is optional. Use this method to add services to the container.
+            // IServiceCollection is a container of service contracts, allowing their injection and setup here (I.E. MVC, Entity Framework). If you add a service that requires substantial setup, wrap it in an extension method of this collection.
+            // Services available at startup: https://docs.asp.net/en/latest/fundamentals/startup.html#services-available-in-startup
+            public void ConfigureServices(IServiceCollection services)
+            {
+                // services.AddMvc();
+            }
+
+            // This method gets called by the runtime, after ConfigureServices, and is required. Use this method to configure the HTTP request pipeline.
+            // IApplicationBuilder is required; provides the mechanisms to configure an application’s request pipeline.
+            public void Configure(IApplicationBuilder app)
+            {
+                app.Run(context => context.Response.WriteAsync("Hello World, from ASP.NET!"));
+            }
+        }
+    }
+    ```
+
+1. End up where you would be in creating an app from an ASP.NET Core template.

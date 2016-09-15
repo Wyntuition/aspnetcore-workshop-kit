@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.IO;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 
 namespace ConsoleApplication
 {
@@ -12,7 +12,7 @@ namespace ConsoleApplication
                 .UseKestrel()
                 //.Configure(app => app.Run(context => context.Response.WriteAsync("Hello World, from ASP.NET!")))
 
-                //.UseContentRoot(Directory.GetCurrentDirectory())
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 //UseIISIntegration()
                 .UseStartup<Startup>()
 
