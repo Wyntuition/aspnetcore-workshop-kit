@@ -17,6 +17,7 @@ namespace ConsoleApplication
         public void Configure(IApplicationBuilder app)
         {
             app.Run(context => context.Response.WriteAsync("Hello World, from ASP.NET!"));
+            app.UseMvc();
         }
     }
 }
