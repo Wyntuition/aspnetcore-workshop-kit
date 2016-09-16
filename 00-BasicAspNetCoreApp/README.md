@@ -2,6 +2,9 @@
 
 This will create a basic .NET Core app using the .NET CLI. Then you will put in the core code needed to set up ASP.NET Core's dependencies and host initialization. 
 
+## Objectives 
+- 
+
 1. Run ```dotnet new```, then ```dotnet run``` to create & run a .NET Core 'Hello World!' app. 
 1. Add ASP.NET Core dependencies to project.json
 
@@ -36,7 +39,7 @@ This will create a basic .NET Core app using the .NET CLI. Then you will put in 
     using Microsoft.AspNetCore.Hosting;
     ```
 
-At this point, you have a minimal ASP.NET Core app set up.
+At this point, you have a minimal ASP.NET Core app set up. You can navigate to http://localhost:5000 to get a hello world.
 
 1. Move configuration of the host to the Startup class, per convention. 
 

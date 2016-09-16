@@ -1,13 +1,18 @@
 # Set up an API 
-
-## Objectives 
-- Replace the static list of products with entity framework in memory store
-- Replace the static list with entity framework + sqlite
-
-
 Set up the pieces to set up an API 
 
+## Objectives 
+- Set the Web API's dependencies and add it into the app via MVC (since it's in the same package) 
+- Set up a basic endpoint
+- Return in-memory data in a RESTful way
+
 1. Set up MVC! The Web API has been merged into MVC, so it's all one package. 
+
+And add this dependency for MVC to project.json, 
+
+```
+"Microsoft.AspNetCore.Mvc": "1.0.0"
+```
 
 Add this method to the Startup class: 
 
@@ -25,12 +30,6 @@ Add this line to the Configure method in Startup:
 app.UseMvc();
 ```
 
-And add this dependency for MVC, 
-
-```
-"Microsoft.AspNetCore.Mvc": "1.0.0"
-```
-
 1. Add meaningful web components - appsettings, web.config
 
 1. Add a controller to serve the API requests called `ArticlesController` and add the following. 
@@ -46,3 +45,14 @@ public class ArticlesController
 
 Run the app and you should be able to hit localhost:5000/api/articles. 
 
+
+
+
+-Config, env 
+-any other infra here? 
+var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
