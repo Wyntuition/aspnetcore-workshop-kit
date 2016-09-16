@@ -6,25 +6,38 @@ Set up the pieces to set up an API
 
 Add this method to the Startup class: 
 
-    ````
-    // This method gets called by the runtime. Use this method to add services to the container.
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddMvcCore();
-    }
-    ````
+```
+// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvcCore();
+}
+```
 
 Add this line to the Configure method in Startup:
-    ````
-    app.UseMvc();
-    ````
+
+```
+app.UseMvc();
+```
 
 And add this dependency for MVC, 
 
-    ````
-    "Microsoft.AspNetCore.Mvc": "1.0.0"
-    ````
+```
+"Microsoft.AspNetCore.Mvc": "1.0.0"
+```
 
-2. Add meaningful web components - appsettings, web.config
+1. Add meaningful web components - appsettings, web.config
 
-3. Add model and controller 
+1. Add a controller to serve the API requests called `ArticlesController` and add the following. 
+
+```
+[Route("/api/[controller]")]
+public class ArticlesController
+{
+  [HttpGet]
+  public string Get() => "Hello World";
+}
+```
+
+Run the app and you should be able to hit localhost:5000/api/articles. 
+
