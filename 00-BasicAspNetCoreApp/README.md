@@ -67,22 +67,22 @@ At this point, you have a minimal ASP.NET Core app set up.
 
 1. Configure the app to use IIS/IIS Express for the web server & set the content root 
 
-Add the following lines (only 2 actual lines of code) after UseStartup in Program.cs Main(): 
+Add the following lines (only 2 actual lines of code) after UseStartup in Program.cs main method: 
 
-    ```        
-        //  If the app should work with IIS, the UseIISIntegration method should be called as part of building the host. Note that this does not configure a server, like UseKestrel does. 
-        //  To use IIS with ASP.NET Core, you must specify both UseKestrel and UseIISIntegration. Kestrel is designed to be run behind a proxy and should not be deployed directly facing the Internet. 
-        //  UseIISIntegration specifies IIS as the reverse proxy server.
-        .UseIISIntegration() // Reverse proxy using IIS & IIS Express. It does not deal with IServer as Kestrel does. This call configures the port and base path the server should listen on when running behind AspNetCoreModule, and also to capture startup errors. 
-        
-        .UseContentRoot(Directory.GetCurrentDirectory()) //  The server’s content root determines where it searches for content files, like MVC View files. The default content root is the folder from which the application is run.
-    ```
+```        
+//  If the app should work with IIS, the UseIISIntegration method should be called as part of building the host. Note that this does not configure a server, like UseKestrel does. 
+//  To use IIS with ASP.NET Core, you must specify both UseKestrel and UseIISIntegration. Kestrel is designed to be run behind a proxy and should not be deployed directly facing the Internet. 
+//  UseIISIntegration specifies IIS as the reverse proxy server.
+.UseIISIntegration() // Reverse proxy using IIS & IIS Express. It does not deal with IServer as Kestrel does. This call configures the port and base path the server should listen on when running behind AspNetCoreModule, and also to capture startup errors. 
+
+.UseContentRoot(Directory.GetCurrentDirectory()) //  The server’s content root determines where it searches for content files, like MVC View files. The default content root is the folder from which the application is run.
+```
 
 You'll need to add this dependency for IIS integration, to project.json: 
 
-    ```
-    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
-    ```
+```
+"Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
+```
 
 Then you can restore and run again. 
 
