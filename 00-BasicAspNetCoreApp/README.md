@@ -1,6 +1,6 @@
 ## Create a .NET Core app, then set up ASP.NET 
 
-This will create a basic .NET Core app using the .NET CLI, and then putting the core code needed to set up ASP.NET Core's dependencies and host initialization. 
+This will create a basic .NET Core app using the .NET CLI. Then you will put in the core code needed to set up ASP.NET Core's dependencies and host initialization. 
 
 1. Run ```dotnet new```, then ```dotnet run``` to create & run a .NET Core 'Hello World!' app. 
 1. Add ASP.NET Core dependencies to project.json
