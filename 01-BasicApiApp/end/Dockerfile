@@ -28,6 +28,6 @@ WORKDIR /app
 
 # USAGE: 
 # 		docker build -t mydemos:aspnetcorehelloworld .
-#		docker run -i -p 8080:5000 -t mydemos:aspnetcorehelloworld <detached, simple>
+#		docker run -i -p 8080:5000 -v $(pwd):/app -t mydemos:aspnetcorehelloworld 
 
 # REFERENCE: https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/product/Dockerfile
