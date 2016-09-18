@@ -1,6 +1,6 @@
 # base
 FROM microsoft/dotnet:latest
-#FROM microsoft/dotnet:1.0.1-core # This is good for running the app, but no dev tools
+#FROM microsoft/dotnet:1.0.1-core # This is good for deployed apps as it will be minimal 
 
 # set up package cache
 RUN curl -o /tmp/packagescache.tar.gz https://dist.asp.net/packagecache/aspnetcore.packagecache-1.0.1-debian.8-x64.tar.gz && \
@@ -13,17 +13,21 @@ RUN curl -o /tmp/packagescache.tar.gz https://dist.asp.net/packagecache/aspnetco
 ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
 
 # set up network
-#ENV ASPNETCORE_URLS http://+:80
 EXPOSE 5000/tcp
 ENV ASPNETCORE_URLS http://*:5000
- 
-# copy my app from current directory
-COPY . /app
+#ENV ASPNETCORE_URLS http://+:80
+
+# copy my app from current directory to target on container 
+COPY . /app 
 WORKDIR /app
  
-# good to use if running app, but not necessarily wanted for development environment 
+# good to use if running app  
 #RUN ["dotnet", "restore"]
 #RUN ["dotnet", "build"]
 #ENTRYPOINT ["dotnet", "run"]
+
+# USAGE: 
+# 		docker build -t mydemos:aspnetcorehelloworld .
+#		docker run -i -p 8080:5000 -t mydemos:aspnetcorehelloworld <detached, simple>
 
 # REFERENCE: https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/product/Dockerfile
