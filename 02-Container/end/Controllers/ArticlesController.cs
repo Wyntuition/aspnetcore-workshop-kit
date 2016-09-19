@@ -4,5 +4,5 @@ using Microsoft.AspNetCore.Mvc;
 public class ArticlesController
 {
   [HttpGet]
-  public string Get() => "Hello, from the controller!!!";
+  public string Get() => "Hello, from the controller. I'm being watched!!!!";
 }

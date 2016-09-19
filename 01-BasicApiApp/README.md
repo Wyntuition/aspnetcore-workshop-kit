@@ -39,7 +39,7 @@ app.UseMvc();
 public class ArticlesController
 {
   [HttpGet]
-  public string Get() => "Hello World";
+  public string Get() => "Hello, from the controller!";
 }
 ```
 

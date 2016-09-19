@@ -21,12 +21,11 @@ ENV ASPNETCORE_URLS http://*:5000
 COPY . /app 
 WORKDIR /app
  
-# good to use if running app  
-#RUN ["dotnet", "restore"]
-#RUN ["dotnet", "build"]
-#ENTRYPOINT ["dotnet", "run"]
+RUN ["dotnet", "restore"]
+RUN ["dotnet", "build"]
+ENTRYPOINT ["dotnet", "watch", "run"]
 
-# USAGE: 
+# USAGE - build image, and expose ports, the current app folder: 
 # 		docker build -t mydemos:aspnetcorehelloworld .
 #		docker run -i -p 8080:5000 -v $(pwd):/app -t mydemos:aspnetcorehelloworld 
 
