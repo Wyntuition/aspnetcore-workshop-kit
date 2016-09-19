@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+
+  web:
+    container_name: 'aspnetcore_run'
+    image: 'mydemos:aspnetcore_run'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+     - "8080:5000"
+    depends_on:
+     - "postgres"
+    networks:
+      - aspnetcoreapp-network
+
+  postgres:
+    container_name: 'postgres'
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: password
+    networks:
+      - aspnetcoreapp-network
+
+networks:
+  aspnetcoreapp-network:
+    driver: bridge
