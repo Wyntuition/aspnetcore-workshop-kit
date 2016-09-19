@@ -15,7 +15,11 @@ The `dotnet watch run` commend is in the Dockerfile so it will start when the co
 
 ## Build & run the container 
 
-You can build the container from this folder using this Dockerfile, using this command: 
+Take a look at the Dockerfile. This specifies what the container will have, and in this case, based on the latest public .NET Core image.
+
+Then it adds some configuration for ASP.NET.  
+
+ You can build the container from this folder using this Dockerfile, using this command: 
 ```docker build -t mydemos:aspnetcorehelloworld .
 
 You then run the container, specifying a port binding for listening, the current app folder to mount in the container, and the container tag.
