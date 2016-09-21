@@ -1,4 +1,4 @@
-## Create a .NET Core app, then set up ASP.NET 
+## Setup Step: Create a .NET Core app, then set up ASP.NET 
 
 This will create a basic .NET Core app using the .NET CLI. Then you will put in the core code needed to set up ASP.NET Core's dependencies and host initialization. 
 
@@ -88,4 +88,6 @@ You'll need to add this dependency for IIS integration, to project.json:
 ```
 
 Then you can restore and run again. 
+
+When you have completed this step, [continue to step 1 to create a basic ASP.NET Web API app] (https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/01-BasicApiApp)
 
