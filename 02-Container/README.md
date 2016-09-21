@@ -19,8 +19,10 @@ Take a look at the Dockerfile. This specifies what the container will have, and 
 
 Then it adds some configuration for ASP.NET.  
 
- You can build the container from this folder using this Dockerfile, using this command: 
-```docker build -t mydemos:aspnetcorehelloworld .
+You can build the ASP.NET Core container from your root app folder which will use the existing Dockerfile, using this command: 
+ ```docker build -t <yourTag:YourAspNetImageName> .```
 
-You then run the container, specifying a port binding for listening, the current app folder to mount in the container, and the container tag.
-```docker run -d -p 8080:5000 -v $(pwd):/app -t mydemos:aspnetcorehelloworld``` 
+You can run the container, specifying a port binding for listening, the current app folder to mount in the container, and the image name, using this command:
+```docker run -d -p 8080:5000 -v $(pwd):/app -t <yourTag:YourAspNetImageName>```
+
+You could manually spin up the postgreSQL container or others in a similar manner. 

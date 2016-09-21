@@ -1,10 +1,9 @@
-# Set up an API 
-Set up the pieces to set up an API 
+## Step 1: Set up an API 
+Set up a basic endpoint with the Web API
 
 ## Objectives 
 - Set the Web API's dependencies and add it into the app via MVC (since it's in the same package) 
 - Set up a basic endpoint
-- Return in-memory data in a RESTful way
 
 1. Set up MVC! The Web API has been merged into MVC, so it's all one package. 
 
@@ -45,9 +44,10 @@ public class ArticlesController
 
 Run the app and you should be able to hit localhost:5000/api/articles. 
 
+When you are finished with this step, [continue to adding entity framework](https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/03-EntityFramework)
 
 
-
+TODO:
 -Config, env 
 -any other infra here? 
 var builder = new ConfigurationBuilder()

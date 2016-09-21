@@ -1,11 +1,10 @@
-## Setup Step: Create a .NET Core app, then set up ASP.NET 
-
-This will create a basic .NET Core app using the .NET CLI. Then you will put in the core code needed to set up ASP.NET Core's dependencies and host initialization. 
+# Setup Step: Create a .NET Core app, then set up ASP.NET  
 
 ## Objectives 
-- 
+- Create a basic .NET Core app using the .NET CLI
+- Put in the core code needed to set up ASP.NET Core - its dependencies and host initialization
 
-1. Run ```dotnet new```, then ```dotnet run``` to create & run a .NET Core 'Hello World!' app. 
+1. Run `dotnet new`, then `dotnet run` to create & run a .NET Core 'Hello World!' app. 
 1. Add ASP.NET Core dependencies to project.json
 
     ```
@@ -39,19 +38,19 @@ This will create a basic .NET Core app using the .NET CLI. Then you will put in 
     using Microsoft.AspNetCore.Hosting;
     ```
 
-At this point, you have a minimal ASP.NET Core app set up. You can navigate to http://localhost:5000 to get a hello world.
+At this point, you have a minimal ASP.NET Core app set up. You can navigate to http://localhost:5000 to get a hello world response.
 
 1. Move configuration of the host to the Startup class, per convention. 
 
-    a. Tweak your Program.cs to use a Startup class for ASP.NET Core host configuration, and remove the include host configuration:
+    1. Tweak your Program.cs to use a Startup class for ASP.NET Core host configuration, and remove the include host configuration:
 
     ```
     //REMOVE THIS: .Configure(app => app.Run(context => context.Response.WriteAsync("Hello World, from ASP.NET!")))                    
     .UseStartup<Startup>()
     ```
 
-    a. Create a class in the project root called Startup.cs
-    a. Add this to your Startup.cs class: 
+    1. Create a class in the project root called Startup.cs
+    1. Add this to your Startup.cs class: 
 
     ```
     namespace ConsoleApplication
@@ -89,5 +88,5 @@ You'll need to add this dependency for IIS integration, to project.json:
 
 Then you can restore and run again. 
 
-When you have completed this step, [continue to step 1 to create a basic ASP.NET Web API app] (https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/01-BasicApiApp)
+When you have completed this step, [continue to step 1 to create a basic ASP.NET Web API app](https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/01-BasicApiApp)
 
