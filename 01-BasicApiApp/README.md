@@ -13,7 +13,7 @@ Set up a basic endpoint with the Web API
 "Microsoft.AspNetCore.Mvc": "1.0.0"
 ```
 
-Add this method to the Startup class: 
+2. Add this method to the Startup class: 
 
 ```
 // This method gets called by the runtime. Use this method to add services to the container.
@@ -23,13 +23,13 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-1. Add this line to the Configure method in Startup:
+3. Add this line to the Configure method in Startup:
 
 ```
 app.UseMvc();
 ```
 
-1. Add a controller to serve the API requests called `ArticlesController` and add the following. 
+4. Add a controller to serve the API requests called `ArticlesController` and add the following. 
 
 ```
 [Route("/api/[controller]")]
@@ -40,7 +40,7 @@ public class ArticlesController
 }
 ```
 
-Run the app and you should be able to hit localhost:5000/api/articles. 
+5. Run the app and you should be able to hit localhost:5000/api/articles. 
 
 When you are finished with this step, [continue to adding entity framework](https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/03-EntityFramework)
 
