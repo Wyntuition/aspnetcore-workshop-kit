@@ -7,9 +7,7 @@ Set up a basic endpoint with the Web API
 
 ## Let's get started
 
-1. Set up MVC! The Web API has been merged into MVC, so it's all one package. 
-
-And add this dependency for MVC to project.json, 
+1. Set up MVC! The Web API has been merged into MVC, so it's all one package. Start by adding this dependency for MVC to project.json, 
 
 ```
 "Microsoft.AspNetCore.Mvc": "1.0.0"
@@ -25,13 +23,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Add this line to the Configure method in Startup:
+1. Add this line to the Configure method in Startup:
 
 ```
 app.UseMvc();
 ```
-
-1. Add meaningful web components - appsettings, web.config
 
 1. Add a controller to serve the API requests called `ArticlesController` and add the following. 
 
@@ -50,7 +46,7 @@ When you are finished with this step, [continue to adding entity framework](http
 
 
 TODO:
--Config, env 
+-Config, env, webconf
 -any other infra here? 
 var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
