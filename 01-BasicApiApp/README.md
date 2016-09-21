@@ -5,6 +5,8 @@ Set up a basic endpoint with the Web API
 - Set the Web API's dependencies and add it into the app via MVC (since it's in the same package) 
 - Set up a basic endpoint
 
+## Let's get started
+
 1. Set up MVC! The Web API has been merged into MVC, so it's all one package. 
 
 And add this dependency for MVC to project.json, 
