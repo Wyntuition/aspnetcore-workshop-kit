@@ -51,8 +51,8 @@ At this point, you have a minimal ASP.NET Core app set up. You can navigate to h
     .UseStartup<Startup>()
     ```
 
-    1. Create a class in the project root called Startup.cs
-    1. Add this to your Startup.cs class (you will then have to add references, via your IDE ideally): 
+    2. Create a class in the project root called Startup.cs
+    3. Add this to your Startup.cs class (you will then have to add references, via your IDE ideally): 
 
     ```
     namespace ConsoleApplication
