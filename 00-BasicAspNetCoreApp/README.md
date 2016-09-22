@@ -55,6 +55,10 @@ At this point, you have a minimal ASP.NET Core app set up. You can navigate to h
     1. Add this to your Startup.cs class: 
 
     ```
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.Extensions.DependencyInjection;
+    
     namespace ConsoleApplication
     {
         public class Startup
