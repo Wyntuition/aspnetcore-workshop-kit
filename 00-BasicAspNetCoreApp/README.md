@@ -34,7 +34,7 @@
     host.Run();
 
 
-    // NOTE, these are needed, and can be added manually, or by the IDE 
+    // NOTE, these are needed and can be added manually, though you can use the IDE (if VS Code + C# extension, or VS) 
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Hosting;
@@ -44,7 +44,7 @@ At this point, you have a minimal ASP.NET Core app set up. You can navigate to h
 
 1. Move configuration of the host to the Startup class, per convention. 
 
-    1. Tweak your Program.cs to use a Startup class for ASP.NET Core host configuration, and remove the include host configuration:
+    1. Tweak your Program.cs to use a Startup class for ASP.NET Core host configuration, and remove the host configuration:
 
     ```
     //REMOVE THIS: .Configure(app => app.Run(context => context.Response.WriteAsync("Hello World, from ASP.NET!")))                    
@@ -52,7 +52,7 @@ At this point, you have a minimal ASP.NET Core app set up. You can navigate to h
     ```
 
     1. Create a class in the project root called Startup.cs
-    1. Add this to your Startup.cs class: 
+    1. Add this to your Startup.cs class (you will then have to add references, via your IDE ideally): 
 
     ```
     namespace ConsoleApplication
