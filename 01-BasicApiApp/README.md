@@ -54,3 +54,5 @@ var builder = new ConfigurationBuilder()
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            "Microsoft.Extensions.Configuration.CommandLine": "1.0.0"

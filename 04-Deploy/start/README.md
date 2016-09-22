@@ -4,10 +4,8 @@
 
 
 
-## Set up database context, repository, and other standard Entity Framework infrastructure 
 
-
-## 1. Set up Entity Framework and register database
+## Set up Entity Framework and register database
 
     `services.AddEntityFramework()
         .AddSqlServer()
@@ -17,11 +15,3 @@
                 options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));`
 
 
-## 2. Add the connection string to appSettings: 
-```
-{
-...
-"ConnectionStrings": {
-    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=aspnet-WebApplication1-26e8893e-d7c0-4fc6-8aab-29b59971d622;Trusted_Connection=True;MultipleActiveResultSets=true"
-  },
-```
