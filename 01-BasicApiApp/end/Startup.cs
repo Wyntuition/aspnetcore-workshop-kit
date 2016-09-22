@@ -9,7 +9,6 @@ namespace ConsoleApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvcCore();
-            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
