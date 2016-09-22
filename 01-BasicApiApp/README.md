@@ -20,6 +20,7 @@ Set up a basic endpoint with the Web API
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvcCore();
+    services.AddAuthorization();
 }
 ```
 
