@@ -7,7 +7,7 @@ Set up a basic endpoint with the Web API
 
 ## Let's get started
 
-1. Set up MVC! The Web API has been merged into MVC, so it's all one package. Start by adding this dependency for MVC to project.json, 
+1. Set up MVC! The Web API has been merged into MVC, so it's all one package. Start by adding this dependency for MVC to project.json. You will have to use your IDE to add using statements in the files referenced, 
 
     ```
     "Microsoft.AspNetCore.Mvc": "1.0.0"
