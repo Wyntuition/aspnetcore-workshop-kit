@@ -15,7 +15,7 @@ Please install & verify you have correct versions installed:
 
 * [Docker](https://www.docker.com/products/overview) (OS X, Windows, Linux, 1.12.1). Verify version: docker -v
 
-* [.NET Core SDK](https://www.microsoft.com/net/core#macos) (OS X, Windows, Linux, v 1.0.0-preview2-003121). Verify version: dotnet -v 
+* [.NET Core SDK](https://www.microsoft.com/net/core) (OS X, Windows, Linux, v 1.0.0-preview2-003121). Verify version: dotnet -v 
 
 * [VS Code](https://code.visualstudio.com/download) (OS X, Windows, Linux) 
 
