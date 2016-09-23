@@ -6,8 +6,8 @@
 
 ## Let's get started
 
-1. Run `dotnet new`, then `dotnet run` to create & run a .NET Core 'Hello World!' app. 
-1. Add ASP.NET Core dependencies to project.json
+1. Open a command line, create and go into a new directory, and run `dotnet new`, then `dotnet run` to create & run a .NET Core 'Hello World!' app. 
+1. Type `code .` to open VS Code for directory. Add ASP.NET Core dependencies to project.json:
 
     ```
     "dependencies": {
