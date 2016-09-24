@@ -94,7 +94,8 @@
 
     ```
     "tools": {
-    "Microsoft.DotNet.Watcher.Tools": "1.0.0-*"
+        "Microsoft.DotNet.Watcher.Tools": "1.0.0-*"
+    }
     ```
 
   Now when we run `dotnet watch run`, the watcher will be active.

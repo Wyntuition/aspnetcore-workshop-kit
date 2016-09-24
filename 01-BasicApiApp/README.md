@@ -99,6 +99,7 @@ Set up a basic endpoint with the Web API
   5. Change the `Get` method in `ArticlesController` to return `Article` and return the article with the id passed in.
 
 ```
+[HttpGet("{id:int}")]
 public Article Get(int id)
 {
     return _Articles.Single(a => a.Id == id);
