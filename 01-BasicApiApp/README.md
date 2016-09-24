@@ -44,72 +44,69 @@ Set up a basic endpoint with the Web API
 
 ## Returning JSON from the API
 
-  4. Create a folder called `Entities` and these classes:
+1. Create a folder called `Entities` and these classes:
 
-  Add an  and an entity base interface called `IEntityBase`:
+    1. Add an  and an entity base interface called `IEntityBase`:
+
+        ```
+        namespace ConsoleApplication.Entities
+        {
+            public interface IEntityBase
+            {
+                int Id { get; set; }
+            }
+        }
+        ```
+
+    1. Then create a class called `Article`:
+
+        ```C#
+        public class Article : IEntityBase
+        {
+            public int Id { get; set; }
+            public string Title { get; set; }
+        }
+        ```
+
+  2. Add the `Microsoft.AspNetCore.Mvc.Formatters.Json` to `project.json`,
+
+        `"Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0"`    
+
+  3. Configure MVC to use the JSON formatter by changing the `ConfigureServices` in `Startup.cs` to use the following,
+    
+```C#
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddMvcCore().AddJsonFormatters();
+    }
+```
+
+  4. Add a static list of projects to the `ArticlesController`:
 
   ```
-  namespace ConsoleApplication.Entities
-  {
-      public interface IEntityBase
-      {
-          int Id { get; set; }
-      }
-  }
-  ```
-
-  Then create a class called `Article`:
-
-  ```C#
-  public class Article : IEntityBase
-  {
-      public int Id { get; set; }
-      public string Title { get; set; }
-  }
-  ```
-
-  1. Add the `Microsoft.AspNetCore.Mvc.Formatters.Json` to `project.json`:
-
-  ```
-      "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0"
-
-  ```
-
-  2. Configure MVC to use the JSON formatter by changing the `ConfigureServices` in `Startup.cs` to use the following:
-
-  ```C#
-  public void ConfigureServices(IServiceCollection services)
-  {
-      services.AddMvcCore().AddJsonFormatters();
-  }
-  ```
-
-  3. Add a static list of projects to the `ArticlesController`:
-
-  ```C#
-  public class ArticlesController : Controller
-  {
-      private static List<Article> _Articles = new List<Article>(new[] {
-          new Article() { Id = 1, Title = "Intro to ASP.NET Core" },
-          new Article() { Id = 2, Title = "Docker Fundamentals" },
-          new Article() { Id = 3, Title = "Deploying to Azure with Docker" },
-      });
-      ...
-  }
+    public class ArticlesController : Controller
+    {
+        private static List<Article> _Articles = new List<Article>(new[] {
+            new Article() { Id = 1, Title = "Intro to ASP.NET Core" },
+            new Article() { Id = 2, Title = "Docker Fundamentals" },
+            new Article() { Id = 3, Title = "Deploying to Azure with Docker" },
+        });
+        ...
+    }
 
   ```
 
-  4. Change the `Get` method in `ArticlesController` to return `IEnumerable<Article>` and return the article with the id passed in.
+  5. Change the `Get` method in `ArticlesController` to return `IEnumerable<Article>` and return the article with the id passed in.
 
-  ```C#
-  [HttpGet("{id}")]
-  public IActionResult Get(int id)
-  {
-      OkOrNotFound(await _context.Articles.SingleOrDefaultAsync(a => a.Id == id));
-  }
-  ```
+```
+[HttpGet("{id}")]
+public IActionResult Get(int id)
+{
+    OkOrNotFound(await _context.Articles.SingleOrDefaultAsync(a => a.Id == id));
+}
+```
 
-  5. Run the application and navigate to `/api/articles/1`. You should see a JSON payload of that article.
+  6. Run the application and navigate to `/api/articles/1`. You should see a JSON payload of that article.
 
 
 When you are finished with this step, [continue to adding entity framework](https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/03-EntityFramework)
