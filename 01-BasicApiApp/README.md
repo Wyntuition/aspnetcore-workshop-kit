@@ -96,7 +96,7 @@ Set up a basic endpoint with the Web API
 
   ```
 
-  5. Change the `Get` method in `ArticlesController` to return `IEnumerable<Article>` and return the article with the id passed in.
+  5. Change the `Get` method in `ArticlesController` to return `Article` and return the article with the id passed in.
 
 ```
 public Article Get(int id)
