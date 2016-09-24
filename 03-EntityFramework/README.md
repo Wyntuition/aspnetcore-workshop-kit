@@ -20,20 +20,11 @@
 
 1. Set up Entity Framework and register database
 
-  ```
-  services.AddEntityFramework()
-      .AddSqlServer()
-      .AddDbContext<ApplicationDbContext>(options =>
-              options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]))
-      .AddDbContext<InvoicesDbContext>(options =>
-              options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
-    ```
-
     ```
     services.AddDbContext<WorkshopContext>(options =>
-        {
-            options.UseSqlite(Configuration.GetConnectionString("Articles"));
-        });
+    {
+        options.UseSqlite(Configuration.GetConnectionString("Articles"));
+    });
     ```
 
 
