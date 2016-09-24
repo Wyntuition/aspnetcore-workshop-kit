@@ -46,7 +46,7 @@ Key configuration files in ASP.NET include appSettings.json. In order to read th
   }
   ```
 
-3. Add an `appSettings.Projection.json` file with the same contents from above, but change `Default` to `Information`.
+3. Add an `appSettings.Production.json` file with the same contents from above, but change the `Default` value to `Information`.
 
 We'll use the appSettings later.
 
