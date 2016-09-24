@@ -20,12 +20,15 @@ Key configuration files in ASP.NET include appSettings.json. In order to read th
   public IConfigurationRoot Configuration { get; }
   ...
 
-  var builder = new ConfigurationBuilder() // Collection of sources for read/write key/value pairs
-      .SetBasePath(env.ContentRootPath)
-      .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-      .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-      .AddEnvironmentVariables();
-  Configuration = builder.Build();
+  public Startup(IHostingEnvironment env)
+  {
+    var builder = new ConfigurationBuilder() // Collection of sources for read/write key/value pairs
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+        .AddEnvironmentVariables();
+    Configuration = builder.Build();
+  }
   ```
 
 2. Add a new file in the root called `app.settings` with this:
