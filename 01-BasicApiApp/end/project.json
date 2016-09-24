@@ -12,7 +12,7 @@
    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
    "Microsoft.AspNetCore.Mvc": "1.0.0",
-   "Microsoft.Extensions.Configuration.CommandLine": "1.0.0"
+   "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0"
   },
   "frameworks": {
     "netcoreapp1.0": {
@@ -24,5 +24,8 @@
       },
       "imports": "dnxcore50"
     }
+  },
+  "tools": {
+    "Microsoft.DotNet.Watcher.Tools": "1.0.0-*"
   }
 }

@@ -44,10 +44,24 @@ Set up a basic endpoint with the Web API
 
 ## Returning JSON from the API
 
-  4. Create a folder called `Models` and create a class called `Article` in that folder:
+  4. Create a folder called `Entities` and these classes:
+
+  Add an  and an entity base interface called `IEntityBase`:
+
+  ```
+  namespace ConsoleApplication.Entities
+  {
+      public interface IEntityBase
+      {
+          int Id { get; set; }
+      }
+  }
+  ```
+
+  Then create a class called `Article`:
 
   ```C#
-  public class Article
+  public class Article : IEntityBase
   {
       public int Id { get; set; }
       public string Title { get; set; }
@@ -56,13 +70,10 @@ Set up a basic endpoint with the Web API
 
   1. Add the `Microsoft.AspNetCore.Mvc.Formatters.Json` to `project.json`:
 
-    ```JSON
-    "dependencies": {
-      "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
-      "Microsoft.AspNetCore.Mvc.Core": "1.0.0-rc2-final",
-      "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0-rc2-final"
-    },
-    ```
+  ```
+      "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0"
+
+  ```
 
   2. Configure MVC to use the JSON formatter by changing the `ConfigureServices` in `Startup.cs` to use the following:
 
@@ -76,7 +87,7 @@ Set up a basic endpoint with the Web API
   3. Add a static list of projects to the `ArticlesController`:
 
   ```C#
-  public class ArticlesController : ControllerBase
+  public class ArticlesController : Controller
   {
       private static List<Article> _Articles = new List<Article>(new[] {
           new Article() { Id = 1, Title = "Intro to ASP.NET Core" },
@@ -88,20 +99,13 @@ Set up a basic endpoint with the Web API
 
   ```
 
-  4. Change the `Get` method in `ArticlesController` to return `IEnumerable<Article>` and return the article with the id passed in. It will return 404 if there are no results.
+  4. Change the `Get` method in `ArticlesController` to return `IEnumerable<Article>` and return the article with the id passed in.
 
   ```C#
   [HttpGet("{id}")]
   public IActionResult Get(int id)
   {
-      var Article = _articles.SingleOrDefault(p => p.Id == id);
-
-      if (Article == null)
-      {
-          return NotFound();
-      }
-
-      return Ok(Article);
+      OkOrNotFound(await _context.Articles.SingleOrDefaultAsync(a => a.Id == id));
   }
   ```
 

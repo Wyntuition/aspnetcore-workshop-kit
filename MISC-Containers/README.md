@@ -26,3 +26,5 @@ You can run the container, specifying a port binding for listening, the current 
 ```docker run -d -p 8080:5000 -v $(pwd):/app -t <yourTag:YourAspNetImageName>```
 
 You could manually spin up the postgreSQL container or others in a similar manner. 
+
+Check out the [instructions on how to spin up multiple containers with docker-compose](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/). In this example, a postgreSQL container spins up in addition to an ASP.NET container.
