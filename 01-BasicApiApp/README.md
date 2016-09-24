@@ -109,4 +109,4 @@ public IActionResult Get(int id)
   6. Run the application and navigate to `/api/articles/1`. You should see a JSON payload of that article.
 
 
-When you are finished with this step, [continue to adding entity framework](https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/03-EntityFramework)
+When you are finished with this step, [continue to adding app configuration](https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/02-AppConfiguration)
