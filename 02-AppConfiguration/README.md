@@ -61,7 +61,7 @@ We'll use the appSettings later.
 2. Navigate to `Startup.cs` and change the `Configure` method to:
 
   ```C#
-  public void Configure(IHostingEnvironment env, IApplicationBuilder app, ILoggerFactory loggerFactory)
+  public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
   {
       loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
