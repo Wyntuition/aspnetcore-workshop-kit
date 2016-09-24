@@ -18,7 +18,7 @@
   }
   ```
 
-1. Set up Entity Framework and register database
+1. Set up Entity Framework and register database to Startup.ConfigureServices:
 
     ```
     services.AddDbContext<ArticlesContext>(options =>
