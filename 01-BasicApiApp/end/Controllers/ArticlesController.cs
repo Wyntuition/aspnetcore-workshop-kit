@@ -18,9 +18,9 @@ namespace ConsoleApplication.Articles
         public string Get() => "Hello, from the controller!!!";
 
         [HttpGet("{id:int}")]
-        public IEnumerable<Article> Get(int id)
+        public Article Get(int id)
         {
-            OkOrNotFound(await _context.Articles.SingleOrDefaultAsync(a => a.Id == id));
+            return _Articles.Single(a => a.Id == id);
         }
     }
 }
