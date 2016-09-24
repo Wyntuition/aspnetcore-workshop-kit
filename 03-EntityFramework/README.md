@@ -21,7 +21,7 @@
 1. Set up Entity Framework and register database
 
     ```
-    services.AddDbContext<WorkshopContext>(options =>
+    services.AddDbContext<ArticlesContext>(options =>
     {
         options.UseSqlite(Configuration.GetConnectionString("Articles"));
     });
