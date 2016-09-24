@@ -71,7 +71,7 @@
           return BadRequest(ModelState);
       }
 
-      _context.Attendees.Add(article);
+      _context.Articles.Add(article);
       await _context.SaveChangesAsync();
 
       return CreatedAtAction(nameof(Get), new { id = article.Id }, article);
