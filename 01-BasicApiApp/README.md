@@ -29,7 +29,7 @@ Set up a basic endpoint with the Web API
     app.UseMvc();
     ```
 
-4. Add a controller to serve the API requests called `ArticlesController` and add the following.
+4. Create a Controllers folder in the root, and add a controller to it called `ArticlesController` to serve the API requests. Add the following to it:
 
     ```
     [Route("/api/[controller]")]
