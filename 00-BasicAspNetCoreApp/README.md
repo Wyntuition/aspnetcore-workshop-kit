@@ -90,7 +90,7 @@
 
     Then you can restore and run again.
 
-1. We're going to add a watcher now so when we change our source files, it rebuilds and re-runs our app,
+1. We're going to add a watcher now so when we change our source files, it rebuilds and re-runs our app. Add this to `project.json`:
 
     ```
     "tools": {
@@ -98,6 +98,7 @@
     }
     ```
 
-  Now when we run `dotnet watch run`, the watcher will be active.
+  1. We have to run `dotnet restore` because we changed our project.json and have a new dependency to pull in. 
+  1. Now when we run `dotnet watch run`, the watcher will be active. Change the Hello World text, save, and see in the command prompt that it automatically rebuilds and re-runs the app.
 
 When you have completed this step, [continue to step 1 to create a basic ASP.NET Web API app](https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/01-BasicApiApp)
