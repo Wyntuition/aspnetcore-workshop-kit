@@ -19,8 +19,12 @@ Please install & verify you have correct versions installed:
 
 * [VS Code](https://code.visualstudio.com/download) (OS X, Windows, Linux)
 
-## Workshop
+## Getting Started 
 
 Start with [00-BasicAspNetCoreApp](https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/00-BasicAspNetCoreApp), and follow the instructions. You don't need to clone the 'start' project - the first step is from scratch and the next steps build on each other, but you can clone in subsequent steps if you don't make it that far. The 'end' folders have the completed application for that section.
 
 When you're finished with the workshop, check out some [next steps](Next.md).
+
+## Containers (optional)
+
+If you're interested in using containers in the development process, take a look at these [instructions](https://github.com/excellalabs/aspnetcore-workshop-kit/blob/master/MISC-Containers/README.md). It goes through running and building (optional) a container to build and run your ASP.NET Core app. It includes a Docker Hub image you can use, and instructions and a Dockerfile if you want to build your own.
