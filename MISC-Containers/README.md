@@ -1,21 +1,8 @@
 # Running in a Docker container 
 
-## Watcher for changed files 
-
-```
-"tools": {
-    "Microsoft.DotNet.Watcher.Tools": {
-      "version": "1.0.0-*",
-      "imports": "portable-net451+win8"
-    }
-  }
-```
-
-The `dotnet watch run` commend is in the Dockerfile so it will start when the container is started. 
-
 ## Build & run the container 
 
-Take a look at the Dockerfile. This specifies what the container will have, and in this case, based on the latest public .NET Core image.
+Take a look at the Dockerfile in the root's code in this section. This specifies what the container will have, and in this case, based on the latest public .NET Core image.
 
 Then it adds some configuration for ASP.NET.  
 
