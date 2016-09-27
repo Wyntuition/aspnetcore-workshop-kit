@@ -25,3 +25,5 @@ Go back to the app's properties and copy the Git URL listed. Create 'Deployment 
 `git remote add azure <Azure app Git URL>`
 
 Then commit and and push to Azure, `git push -u azure master`. For more [detailed instruction, see Microsoft's docs](https://azure.microsoft.com/en-us/documentation/articles/app-service-deploy-local-git/).
+
+Congratulations! You have completed a basic ASP.NET Core Web API app, and gone through key steps involved in the lifecycle. Check out some [next steps and resources](https://github.com/excellalabs/aspnetcore-workshop-kit/blob/master/Next.md). 
