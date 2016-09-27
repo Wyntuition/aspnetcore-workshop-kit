@@ -91,7 +91,7 @@
 
 Now, from the command line:
 
-1. Build
+1. Build with `dotnet build`
 1. Run migrations with:
 
   `dotnet ef migrations add Initial `
@@ -112,10 +112,14 @@ Now, from the command line:
   public async Task<IEnumerable<Article>> Get() => await _context.Set<Article>().ToListAsync();
   ```
 
-ef commands:
+2. Navigate to the endpoint, [http://localhost:5000:/api/articles](http://localhost:5000:/api/articles), and you should see your article displayed. You can add more, and notice that you can stop the app and re-run it, and the data persists in the SQLite database. 
+
+### ef commands:
 
   - add – Add a new migration
   - apply – Apply migrations to the database
   - list – List the migrations
   - script – Generate a SQL script from migrations
   remove – Remove the last migration
+  
+  Congratulations on completing the Entity Framework section! You can go on to the [Deployment section](04-Deploy section) now.
