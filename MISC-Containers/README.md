@@ -1,6 +1,6 @@
 # Running in a Docker container 
 
-## Build & run the container 
+### Build the container (optional, you can skip to running the container to just get an environment started up)
 
 Take a look at the Dockerfile in the root's code in this section. This specifies what the container will have, and in this case, based on the latest public .NET Core image.
 
@@ -11,7 +11,9 @@ You can build the ASP.NET Core container from your root app folder which will us
 
 ### Run the container 
 
-- You can run the container, specifying a port binding for listening, the current app folder to mount in the container, and the image name, using this command:
+You can have your ASP.NET Core environment in a Docker container while you develop on your host machine. See these [instructions on the ASP.NET Core devlopment workflow with Docker](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/) for more information. 
+
+For now, you can run the container, specifying a port binding for listening, the current app folder to mount in the container, and the image name, using this command:
 
     `docker run -d -p 8080:5000 -v $(pwd):/app -t <yourTag:YourAspNetImageName>`  
 
