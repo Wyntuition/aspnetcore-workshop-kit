@@ -5,6 +5,7 @@ using System.Linq;
 using ConsoleApplication.Infrastructure;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace ConsoleApplication.Articles
 {
@@ -12,23 +13,34 @@ namespace ConsoleApplication.Articles
     public class ArticlesController : Controller
     {
         private readonly ArticlesContext _context;
-        public ArticlesController(ArticlesContext context)
+        private readonly ILogger<ArticlesController> _logger; 
+
+        public ArticlesController(ArticlesContext context, ILogger<ArticlesController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<IEnumerable<Article>> Get() => await _context.Set<Article>().ToListAsync();
 
         [HttpGet("{id:int}")]
-        public async Task<Article> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return await _context.Articles.SingleOrDefaultAsync(a => a.Id == id);
+            var article = await _context.Articles.SingleOrDefaultAsync(m => m.Id == id);
+            if (article == null)
+            {
+                return NotFound();
+            }
+
+            return View(article);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody]Article article)
         {
+            _logger.LogDebug("Starting save");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -36,6 +48,8 @@ namespace ConsoleApplication.Articles
 
             _context.Articles.Add(new Article { Title = article.Title });
             await _context.SaveChangesAsync();
+
+            _logger.LogDebug("Finished save");
 
             return CreatedAtAction(nameof(Get), new { id = article.Title }, article);
         }
