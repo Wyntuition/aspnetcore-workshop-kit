@@ -15,7 +15,7 @@ You can build the ASP.NET Core container from your root app folder which will us
 
     `docker run -d -p 8080:5000 -v $(pwd):/app -t <yourTag:YourAspNetImageName>`  
 
-    EXAMPLE: [Run a container with an ASP.NET Core devlopment environmnet](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/) from a pre-made images from Docker Hub by running this:
+    EXAMPLE: [Run a container with an ASP.NET Core devlopment environmnet](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/) from a pre-made image from Docker Hub, by going into your app's directory and running this:
     ```
     docker run -d -p 5000:5000 -v $(pwd):/app -t wyntuition/aspnetcore-development-env
     ```
