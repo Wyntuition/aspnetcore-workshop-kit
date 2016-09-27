@@ -30,7 +30,7 @@ namespace ConsoleApplication.Articles
             var article = await _context.Articles.SingleOrDefaultAsync(m => m.Id == id);
             if (article == null)
             {
-                return NotFound();
+                return NotFound(); // This makes it return 404; otherwise it will return a 204 (no content) 
             }
 
             return new ObjectResult(article);
