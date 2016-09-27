@@ -91,7 +91,7 @@
 
 Now, from the command line:
 
-1. Build
+1. Build with `dotnet build`
 1. Run migrations with:
 
   `dotnet ef migrations add Initial `
