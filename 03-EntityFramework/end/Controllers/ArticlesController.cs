@@ -33,7 +33,7 @@ namespace ConsoleApplication.Articles
                 return NotFound();
             }
 
-            return View(article);
+            return new ObjectResult(article);
         }
 
         [HttpPost]
