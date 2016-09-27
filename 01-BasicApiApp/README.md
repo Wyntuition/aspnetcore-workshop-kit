@@ -74,37 +74,37 @@ Set up a basic endpoint with the Web API
 
   3. Configure MVC to use the JSON formatter by changing the `ConfigureServices` in `Startup.cs` to use the following,
     
-```C#
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddMvcCore().AddJsonFormatters();
-    }
-```
+        ```C#
+            public void ConfigureServices(IServiceCollection services)
+            {
+                services.AddMvcCore().AddJsonFormatters();
+            }
+        ``` 
 
   4. Add a static list of projects to the `ArticlesController`:
 
-  ```
-    public class ArticlesController : Controller
-    {
-        private static List<Article> _Articles = new List<Article>(new[] {
-            new Article() { Id = 1, Title = "Intro to ASP.NET Core" },
-            new Article() { Id = 2, Title = "Docker Fundamentals" },
-            new Article() { Id = 3, Title = "Deploying to Azure with Docker" },
-        });
-        ...
-    }
+        ```
+        public class ArticlesController : Controller
+        {
+            private static List<Article> _Articles = new List<Article>(new[] {
+                new Article() { Id = 1, Title = "Intro to ASP.NET Core" },
+                new Article() { Id = 2, Title = "Docker Fundamentals" },
+                new Article() { Id = 3, Title = "Deploying to Azure with Docker" },
+            });
+            ...
+        }
 
-  ```
+        ```   
 
   5. Change the `Get` method in `ArticlesController` to return `Article` and return the article with the id passed in.
 
-```
-[HttpGet("{id:int}")]
-public Article Get(int id)
-{
-    return _Articles.Single(a => a.Id == id);
-}
-```
+        ```
+        [HttpGet("{id:int}")]
+        public Article Get(int id)
+        {
+            return _Articles.Single(a => a.Id == id);
+        }
+        ```
 
   6. Run the application and navigate to `/api/articles/1`. You should see a JSON payload of that article.
 
