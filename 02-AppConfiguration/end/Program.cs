@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace ConsoleApplication
 {
@@ -8,6 +9,10 @@ namespace ConsoleApplication
     {
         public static void Main(string[] args)
         {
+            var config = new ConfigurationBuilder()  
+                .AddCommandLine(args)
+                .Build();
+
             var host = new WebHostBuilder() //  Build the host. Must implement IWebHost and returns a WebHost object
                 .UseKestrel() //  Creates web server and hosts the code. WebHostBuilder requires a server that implements IServer, as this does.
                                 
@@ -17,6 +22,7 @@ namespace ConsoleApplication
                 .UseIISIntegration() // Reverse proxy using IIS & IIS Express. It does not deal with IServer as Kestrel does. This call configures the port and base path the server should listen on when running behind AspNetCoreModule, and also to capture startup errors. 
                 .UseContentRoot(Directory.GetCurrentDirectory()) //  The server’s content root determines where it searches for content files, like MVC View files. The default content root is the folder from which the application is run.
                 .UseStartup<Startup>()
+                .UseConfiguration(config)
                 .Build();
 
             host.Run();

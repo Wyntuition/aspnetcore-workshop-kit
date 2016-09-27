@@ -6,9 +6,51 @@
 - Logging
 - Dependency injection
 
+## Hosting environment 
+
+There are a number of things we want happening differently depending what hosting environment we're in, such as showing exceptions in the browser if we're in our development environment or using a specific configuration file per environment. If we don't specify somehow, ASP.NET will default to our hosting environment being "Production". There are a number of ways to set the hosting environment. 
+
+1. We're going to set the hosting environment to "Development" in our OS's environment variables, so it will default to that. Otherwise you'd have to pass it every time you run the app from the command line. 
+
+See [this blog](http://andrewlock.net/how-to-set-the-hosting-environment-in-asp-net-core/) for how to do it in your environment. For OS X, run this in your bash,
+
+```
+sudo nano ~/.bash_profile
+```
+
+Add this, and hit Ctrl+X to save and exit: 
+
+```
+export ASPNETCORE_ENVIRONMENT=Development 
+```  
+
+2. Run `dotnet run` and see that it says the hosting environment is now development. 
+
+## Command-line arguments
+
+We're going to need to change the hosting environment locally sometimes. For example, we might want run the Production configuration settings locally while we're developing them. To allow this, we're going to add functionality to pass command-line arguments into our app. 
+
+1. Add this configutation to the `Program.Main method`. You will need to add a using statement:
+
+  ```
+  var config = new ConfigurationBuilder()  
+      .AddCommandLine(args)
+      .Build();
+   ```
+
+2. Then add this right before Build() in the WebHostBuilder initialization, so we can use the configuration object we just created: 
+
+  ```
+  .UseConfiguration(config)
+  ```
+
+Now you can run `dotnet run --environment "production"` when you want the hosting environment to be that (or you can use staging, etc or your own). 
+
 ## Configuration files
 
-Key configuration files in ASP.NET include appSettings.json. In order to read that and other configuration sources, we have to
+Key configuration files in ASP.NET include appSettings.json. We're going to add that now, as well as a version for production.
+
+In order to read that and other configuration sources, we have to:
 
 1. Add these dependencies, `"Microsoft.Extensions.Configuration.CommandLine": "1.0.0",
 "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0-*",
@@ -69,18 +111,24 @@ We'll use the appSettings later.
       ...
   ```
 
-  3. Add some log statements to the end of the `Configure` method to test the settings:
+3. Add some log statements to the end of the `Configure` method to test the settings:
 
-  ```C#
-  public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
-  {
-    ...
-    startupLogger.LogDebug("Debug output!");
-    startupLogger.LogInformation("Application startup complete!");
-    startupLogger.LogTrace("Trace output!");
-    startupLogger.LogError("Error output!");
-  }
-  ```
+```C#
+public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+{
+  ...
+  startupLogger.LogDebug("Debug output!");
+  startupLogger.LogInformation("Application startup complete!");
+  startupLogger.LogTrace("Trace output!");
+  startupLogger.LogError("Error output!");
+}
+```
+
+4. Run `dotnet restore` since we added a package, and then `dotnet run`. In the console, you should see the alll the log statements you just added since in `appSettings.json` it is set to show debug log entries and more severe.
+
+5. Run `dotnet run --environment "Production"` 
+
+You should no longer see the debug log entry in the console, since the `appSettings.Production.json` is set to only show informational log entries and more severe. Also note that it says the hosting environment in the console, which should be "production". 
 
 ## Dependency Injection
 

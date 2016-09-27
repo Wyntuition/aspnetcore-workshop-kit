@@ -61,31 +61,47 @@
   }
   ```
 
+1. Inject the database context into the contructor of the controller. While at it, add a logger so we can try it out in a controller. Add the following property and constructor parameter to utilize the logging framework you set up earlier. 
+
+```
+private readonly ArticlesContext _context;
+private readonly ILogger<ArticlesController> _logger; 
+
+public ArticlesController(ArticlesContext context, ILogger<ArticlesController> logger)
+{
+    _context = context;
+    _logger = logger;
+}
+```
+
+1. Update the `Get` endpoint in `ArticlesController` to use the database context. You can now remove the _Articles object there.
+
+  `var applicant = await _context.Applicants.SingleOrDefaultAsync(m => m.Id == id);`
+
+You can also add this method, replacing the Hello World method, to return all items added to the database,
+  
+  ```C#
+  public async Task<IEnumerable<Article>> Get() => await _context.Set<Article>().ToListAsync();
+  ```
+
 1. Create a method so we can populate the database.
   ```
   [HttpPost]
   public async Task<IActionResult> Create([FromBody]Article article)
   {
+      _logger.LogDebug("Starting save");
+
       if (!ModelState.IsValid)
       {
           return BadRequest(ModelState);
       }
 
-      _context.Articles.Add(article);
+      _context.Articles.Add(new Article { Title = article.Title });
       await _context.SaveChangesAsync();
 
-      return CreatedAtAction(nameof(Get), new { id = article.Id }, article);
-  }
-  ```
+      _logger.LogDebug("Finished save");
 
-1. Use the database context in the API controller:
-
-  ```
-  private readonly ArticlesContext _context;
-
-  public ArticlesController(ArticlesContext context)
-  {
-      _context = context;
+      return CreatedAtAction(nameof(Get), new { id = article.Title }, article);
   }
   ```
 
@@ -106,13 +122,11 @@ Now, from the command line:
   curl -H "Content-Type: application/json" -X POST -d '{"title":"I Was Posted"}' http://localhost:5000/api/articles
   `
 
-1. Update the get endpoint to get our added item. You can also add this method, replacing the Hello World method, to return all items,
+2. Navigate to the endpoint, [http://localhost:5000:/api/articles](http://localhost:5000:/api/articles).  
 
-  ```C#
-  public async Task<IEnumerable<Article>> Get() => await _context.Set<Article>().ToListAsync();
-  ```
+You should see your article displayed. You can add more, and notice that you can stop the app and re-run it, and the data persists in the SQLite database.
 
-2. Navigate to the endpoint, [http://localhost:5000:/api/articles](http://localhost:5000:/api/articles), and you should see your article displayed. You can add more, and notice that you can stop the app and re-run it, and the data persists in the SQLite database. 
+Also, note the log messages from the statements you added when saving an item.  
 
 ### ef commands:
 
