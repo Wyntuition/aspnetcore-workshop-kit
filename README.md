@@ -1,10 +1,10 @@
 # Workshop: ASP.NET Core
 
-This workshop goes through creating an ASP.NET Core application from scratch, so it is easier to see what all the parts are and what they do. We will use the new, platform-agnostic tools - the .NET Core CLI and VS Code so we can see the cross-platform experience.     
+This workshop goes through creating an ASP.NET Core application from scratch, so it is easier to see what all the parts are and what they do. We will use the new, platform-agnostic tools - the .NET Core CLI and VS Code so we can see the cross-platform experience. This can be conducted as a group workshop, or done individually. 
 
-First, there will be an overview presentation of .NET Core, and then the architecture of ASP.NET Core. (Workshop presenters: there is a slide deck included)  
+First, there will be an overview presentation of .NET Core, and then the architecture of ASP.NET Core. (Workshop presenters: there is a slide deck included).  
 
-Then it goes onto coding up a basic, API-based app, in order to understand the technology and the new development process. If there is time, we can deploy to the cloud, or even build a container and deploy it in that.
+Then it goes walks through coding up a basic, API-based app, in order to understand the technology and the new development process. If there is time, we can deploy to the cloud, or even build a container and deploy it in that.
 
 I recommend using Docker for the .NET Core development environment so you can build and run the app in a container. This way, you'll get to try the ASP.NET Core development workflow with Docker. You can skip using Docker if you'd like; you'll still be able to follow along fine if your .NET Core SDK is working and the latest version. You can use this [Docker image of an ASP.NET Core development environmnet](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/), and there are instructions for starting the container.
 
@@ -19,8 +19,12 @@ Please install & verify you have correct versions installed:
 
 * [VS Code](https://code.visualstudio.com/download) (OS X, Windows, Linux)
 
-## Workshop
+## Getting Started 
 
-Start with [00-BasicAspNetCoreApp](https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/00-BasicAspNetCoreApp), and follow the instructions. You don't need to clone the 'start' project - the first step is from scratch and the next steps build on each other, but you can clone in subsequent steps if you don't make it that far. The 'end' folders have the completed application for that section.
+Start with [00-BasicAspNetCoreApp](00-BasicAspNetCoreApp), and follow the instructions. You don't need to clone the 'start' project - the first step is from scratch and the next steps build on each other, but you can clone in subsequent steps if you don't make it that far. The 'end' folders have the completed application for that section.
 
 When you're finished with the workshop, check out some [next steps](Next.md).
+
+## Containers (optional)
+
+If you're interested in using containers in the development process, take a look at these [instructions](MISC-Containers/README.md). It goes through running and building (optional) a container to build and run your ASP.NET Core app. It includes a Docker Hub image you can use, and instructions and a Dockerfile if you want to build your own.
