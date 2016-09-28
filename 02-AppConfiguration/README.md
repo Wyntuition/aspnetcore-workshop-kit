@@ -121,10 +121,11 @@ In order to read that and other configuration sources, we have to:
     public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
     {
       ...
-      startupLogger.LogDebug("Debug output!");
-      startupLogger.LogInformation("Application startup complete!");
-      startupLogger.LogTrace("Trace output!");
-      startupLogger.LogError("Error output!");
+        startupLogger.LogTrace("Trace test output!");
+        startupLogger.LogDebug("Debug test output!");
+        startupLogger.LogInformation("Info test output!");            
+        startupLogger.LogError("Error test output!");
+        startupLogger.LogCritical("Trace test output!");
     }
     ```
 

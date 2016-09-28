@@ -10,7 +10,6 @@ namespace ConsoleApplication
     public class Startup
     {
         public IConfigurationRoot Configuration { get; }
-        public string EnvironmentName { get; set; }
 
         public Startup(IHostingEnvironment env)
         {
@@ -20,8 +19,6 @@ namespace ConsoleApplication
                 .AddJsonFile($"appSettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
-
-            EnvironmentName = env.EnvironmentName;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -39,11 +36,11 @@ namespace ConsoleApplication
 
             app.UseMvc();
 
-            startupLogger.LogInformation(EnvironmentName);
-            startupLogger.LogDebug("Debug output!");
-            startupLogger.LogInformation("Application startup complete!");
-            startupLogger.LogTrace("Trace output!");
-            startupLogger.LogError("Error output!");
+            startupLogger.LogTrace("Trace test output!");
+            startupLogger.LogDebug("Debug test output!");
+            startupLogger.LogInformation("Info test output!");            
+            startupLogger.LogError("Error test output!");
+            startupLogger.LogCritical("Trace test output!");            
         }
     }
 }
