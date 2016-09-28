@@ -101,4 +101,4 @@
   1. We have to run `dotnet restore` because we changed our project.json and have a new dependency to pull in. 
   1. Now when we run `dotnet watch run`, the watcher will be active. Change the Hello World text, save, and see in the command prompt that it automatically rebuilds and re-runs the app.
 
-When you have completed this step, [continue to step 1 to create a basic ASP.NET Web API app](01-BasicApiApp/README.md)
+When you have completed this step, [continue to step 1 to create a basic ASP.NET Web API app](../01-BasicApiApp/README.md)
