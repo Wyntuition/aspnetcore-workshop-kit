@@ -17,7 +17,7 @@ namespace ConsoleApplication
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appSettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appSettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
+                .AddEnvironmentVariables(); // Overrides environment variables with valiues from config files/etc
             Configuration = builder.Build();
         }
 
