@@ -1,4 +1,4 @@
-# Configuring basic app features
+# Step 2: Configuring basic app features
 
 ## Objectives
 - Set up configuration files
@@ -25,6 +25,36 @@ There are a number of things we want happening differently depending what hostin
     ```  
 
 2. Run `dotnet run` and see that it says the hosting environment is now development. 
+
+3. Now we want to set it up so when the hosting environment is development, it will display a detailed exception page in the browser, including header information. 
+
+    1. To do that, first add this dependency: 
+
+        ```
+        "Microsoft.AspNetCore.Diagnostics": "1.0.0",
+        ```
+
+    1. Then add  `IHostingEnvironment` to the Startup.cs `Configure` method, and use that object to get the environment. Then add the code to check the environment and add the developer exception page middleware:
+
+        ```
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            ...
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            ...
+        ```
+
+    1. You can test it and see the exception page by creating an exception in the pipeline, right under the UseDeveloperExceptionPage:  
+        ```
+        app.Run((context) =>
+        {
+            throw new InvalidOperationException("Oops!");
+        });
+        ```
+    1. Run and browse to the app. You should see the detailed exception page. Otherwise, nothing would be displayed with the 500 response. Remove the exception just added. 
 
 ## Command-line arguments
 
@@ -107,7 +137,7 @@ In order to read that and other configuration sources, we have to:
 2. Navigate to `Startup.cs` and change the `Configure` method to:
 
     ```C#
-    public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
     {
         loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 

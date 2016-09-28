@@ -1,4 +1,4 @@
-# Deploying an ASP.NET Core app
+# Step 5: Deploying an ASP.NET Core app
 
 ## Publishing - preparing for deployment
 

@@ -1,6 +1,10 @@
+# Step 3: Entity Framework and Data Access Infrastructure 
+
 ## Objectives
 - Set up Entity Framework Core 1.0
-- Connect to a database (SQLite in this case)
+- wire it to a database (SQLite in this case)
+- Use it to get and post some data to the database, from our controller 
+- Set up the repository pattern for data access  
 
 ## Set up database context and other standard Entity Framework infrastructure
 
