@@ -39,11 +39,6 @@ namespace ConsoleApplication
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run((context) =>
-            {
-                throw new InvalidOperationException("Oops!");
-            });
-
             app.UseMvc();
 
             startupLogger.LogTrace("Trace test output!");
