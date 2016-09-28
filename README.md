@@ -21,10 +21,12 @@ Please install & verify you have correct versions installed:
 
 ## Getting Started 
 
-Start with [00-BasicAspNetCoreApp](00-BasicAspNetCoreApp), and follow the instructions. You don't need to clone the 'start' project - the first step is from scratch and the next steps build on each other, but you can clone in subsequent steps if you don't make it that far. The 'end' folders have the completed application for that section.
-
-When you're finished with the workshop, check out some [next steps](Next.md).
+Start with [Create a .NET Core app and set up ASP.NET](00-BasicAspNetCoreApp), and follow the instructions. You don't need to clone the 'start' project - the first step is from scratch and the next steps build on each other, but you can clone in subsequent steps if you don't make it that far. The 'end' folders have the completed application for that section.
 
 ## Containers (optional)
 
 If you're interested in using containers in the development process, take a look at these [instructions](MISC-Containers/README.md). It goes through running and building (optional) a container to build and run your ASP.NET Core app. It includes a Docker Hub image you can use, and instructions and a Dockerfile if you want to build your own.
+
+When you're finished with the workshop, check out some [next steps](Next.md).
+
+## [Get started now!](00-BasicAspNetCoreApp)
