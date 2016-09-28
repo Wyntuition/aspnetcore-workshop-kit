@@ -174,4 +174,4 @@ Here are some key points about the dependency injection that is now baked into A
 - You configure the built-in container’s services in the ConfigureServices method in your application’s Startup class.
 - The built-in services container is meant to serve the basic needs of the framework and most consumer applications built on it, but has a minimal feature set and is not intended to replace other containers.
 
-When you are finished with this step, [continue to adding entity framework](https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/03-EntityFramework)
+When you are finished with this step, [continue to adding entity framework](03-EntityFramework)
