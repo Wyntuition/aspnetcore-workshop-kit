@@ -28,7 +28,7 @@ bld/
 #wwwroot/
 
 .vscode/
-.DS_Store/
+.DS_Store
 
 # MSTest test Results
 [Tt]est[Rr]esult*/

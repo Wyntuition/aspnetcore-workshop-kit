@@ -1,5 +1,6 @@
 # Some next steps...
 
+- Log to a file, database, etc. 
 - Deploying in a Docker container
 - Authentication and Authorization
 - Custom middleware
