@@ -150,4 +150,4 @@ Repositories will encapsulate your database context and provide a place to put d
 - (optional) Implement another repository class that implements the same interface as the one you just created, but implement it to save the itmes to an in-memory collection. See how you can use DI to inject the interface, then specify the implementation in the DI configuration. You can change this configuration to switch from the im-memory storage to database storage. 
 
 
-Congratulations on completing the Entity Framework section! You can go on to the [Deployment section](04-Deploy) now.
+Congratulations on completing the Entity Framework section! You can go on to the [Deployment section](04-Deploy/README.md) now.
