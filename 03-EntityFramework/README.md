@@ -137,5 +137,13 @@ Also, note the log messages from the statements you added when saving an item.
   - script – Generate a SQL script from migrations
   - remove – Remove the last migration
   
+## Add a repository 
+
+Repositories will encapsulate your database context and provide a place to put data access code. In this exercise, you will:
+
+- Add a repository class for your context object (I recommend using a generic base repository when simple, and adding repositories specific to the aggregate roots when specific data access code is needed. This will prevent an explosion of similar repository code, such as duplicate add/update/etc code)
+- Register the repository in the container so it can be injected with DI 
+- (optional) Implement another repository class that implements the same interface as the one you just created, but implement it to save the itmes to an in-memory collection. See how you can use DI to inject the interface, then specify the implementation in the DI configuration. You can change this configuration to switch from the im-memory storage to database storage. 
+
 
 Congratulations on completing the Entity Framework section! You can go on to the [Deployment section](04-Deploy) now.
