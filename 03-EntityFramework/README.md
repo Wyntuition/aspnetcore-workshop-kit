@@ -65,7 +65,7 @@
     }
     ```
 
-1. Inject the database context into the contructor of the controller. While at it, add a logger so we can try it out in a controller. Add the following property and constructor parameter to utilize the logging framework you set up earlier. 
+1. Inject the database context into the constructor of the controller. While at it, add a logger so we can try it out in a controller. Add the following property and constructor parameter to utilize the logging framework you set up earlier. 
 
     ```
     private readonly ArticlesContext _context;
@@ -78,9 +78,9 @@
     }
     ```
 
-1. Update the `Get` endpoint in `ArticlesController` to use the database context, as followed. You can now remove the _Articles object there.
+1. Update the `Get` endpoint in `ArticlesController` to use the database context, as follows. You can now remove the _Articles object there.
 
-    `var applicant = await _context.Applicants.SingleOrDefaultAsync(m => m.Id == id);`
+    `var article = await _context.Articles.SingleOrDefaultAsync(m => m.Id == id);`
 
     You can also add this method, replacing the Hello World method, to return all items added to the database,
   
