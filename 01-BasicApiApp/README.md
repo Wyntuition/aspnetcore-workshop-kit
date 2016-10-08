@@ -33,7 +33,7 @@ Set up a basic endpoint with the Web API
 
     ```
     [Route("/api/[controller]")]
-    public class ArticlesController
+    public class ArticlesController : Controller
     {
         [HttpGet]
         public string Get() => "Hello, from the controller!";
