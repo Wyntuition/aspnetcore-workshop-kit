@@ -101,7 +101,7 @@
         }
 
         _context.Articles.Add(new Article { Title = article.Title });
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(); 
 
         _logger.LogDebug("Finished save");
 

@@ -1,6 +1,8 @@
+# Describes how to build a Docker image. Each instruction creates a new layer in the image. 
+
 # base
-FROM microsoft/dotnet:latest
-#FROM microsoft/dotnet:1.0.1-core # This is good for deployed apps as it will be minimal 
+# This is good for deployed apps as it will be minimal 
+FROM microsoft/dotnet:1.0.1-core 
 
 # set up package cache
 RUN curl -o /tmp/packagescache.tar.gz https://dist.asp.net/packagecache/aspnetcore.packagecache-1.0.1-debian.8-x64.tar.gz && \
@@ -17,16 +19,17 @@ EXPOSE 5000/tcp
 ENV ASPNETCORE_URLS http://*:5000
 #ENV ASPNETCORE_URLS http://+:80
 
-# copy my app from current directory to target on container 
-COPY . /app 
-WORKDIR /app
- 
+# copy files from current directory to target on container - i.e. if you want your app in the container and want to deploy it
+COPY . /sampleAspnetCoreWebApiApp 
+WORKDIR /sampleAspnetCoreWebApiApp
+
+# this is useful is you want the container to be running the app when it's finished starting up
 RUN ["dotnet", "restore"]
 RUN ["dotnet", "build"]
 ENTRYPOINT ["dotnet", "watch", "run"]
 
 # USAGE - build image, and expose ports, the current app folder: 
 # 		docker build -t mydemos:aspnetcorehelloworld .
-#		docker run -i -p 8080:5000 -v $(pwd):/app -t mydemos:aspnetcorehelloworld 
+#		docker run -d -p 80:5000 -v $(pwd):/app -t mydemos:aspnetcorehelloworld 
 
 # REFERENCE: https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/product/Dockerfile
