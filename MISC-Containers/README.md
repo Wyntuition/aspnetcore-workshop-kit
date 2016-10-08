@@ -39,12 +39,18 @@ Now you can code in your host environment using your IDE as usual, and the conta
 
 There is a `docker-compose.yml` file in the repo that use Docker Compose to spin up an ASP.NET Core container, and a postgreSQL container.
 
-To build the images and run them:
-docker-compose up
+### To build the images and run them:
+
+  ```
+  docker-compose up
+  ```
 
 You can add -d at the end so the containers run in the background; without it they would stop when you exit the shell. You can connect to the shell via 'docker exec -ti <Container> sh`.
 
-To stop the containers:
-docker-compose stop
+### To stop the containers:
+
+  ```
+  docker-compose stop
+  ```
 
 With them running, you should be able to navigate to your web app (or the Web API sample endpoint in this app - http://localhost:8080/api/articles). You should be able to develop as usual on your computer, but when you save, your code is rebuilt in the ASP.NET container, and then run from there. You can try changing the /Controllers/ArticlesController.cs code and see it update at that endpoint, which is being hosted from the ASP.NET container.
