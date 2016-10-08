@@ -54,3 +54,9 @@ You can add -d at the end so the containers run in the background; without it th
   ```
 
 With them running, you should be able to navigate to your web app (or the Web API sample endpoint in this app - http://localhost:8080/api/articles). You should be able to develop as usual on your computer, but when you save, your code is rebuilt in the ASP.NET container, and then run from there. You can try changing the /Controllers/ArticlesController.cs code and see it update at that endpoint, which is being hosted from the ASP.NET container.
+
+It is useful to log into your containers. To do that, use this: 
+
+  ```
+  docker exec -ti <Container name> sh
+  ```
