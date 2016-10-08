@@ -4,7 +4,7 @@ services:
 
   web:
     container_name: 'aspnetcore_run'
-    image: 'mydemos:aspnetcore_run'
+    image: 'wyntuition/aspnetcore-development-env'
     build:
       context: .
       dockerfile: Dockerfile
