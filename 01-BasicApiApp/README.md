@@ -33,7 +33,7 @@ Set up a basic endpoint with the Web API
 
     ```
     [Route("/api/[controller]")]
-    public class ArticlesController
+    public class ArticlesController : Controller
     {
         [HttpGet]
         public string Get() => "Hello, from the controller!";
@@ -109,4 +109,4 @@ Set up a basic endpoint with the Web API
   6. Run the application and navigate to `/api/articles/1`. You should see a JSON payload of that article.
 
 
-When you are finished with this step, [continue to adding app configuration](https://github.com/Wyntuition/aspnetcore-workshop-kit/tree/master/02-AppConfiguration)
+When you are finished with this step, [continue to adding app configuration](../02-AppConfiguration/README.md)

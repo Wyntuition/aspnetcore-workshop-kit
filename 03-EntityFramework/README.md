@@ -65,7 +65,7 @@
     }
     ```
 
-1. Inject the database context into the contructor of the controller. While at it, add a logger so we can try it out in a controller. Add the following property and constructor parameter to utilize the logging framework you set up earlier. 
+1. Inject the database context into the constructor of the controller. While at it, add a logger so we can try it out in a controller. Add the following property and constructor parameter to utilize the logging framework you set up earlier. 
 
     ```
     private readonly ArticlesContext _context;
@@ -78,9 +78,9 @@
     }
     ```
 
-1. Update the `Get` endpoint in `ArticlesController` to use the database context, as followed. You can now remove the _Articles object there.
+1. Update the `Get` endpoint in `ArticlesController` to use the database context, as follows. You can now remove the _Articles object there.
 
-    `var applicant = await _context.Applicants.SingleOrDefaultAsync(m => m.Id == id);`
+    `var article = await _context.Articles.SingleOrDefaultAsync(m => m.Id == id);`
 
     You can also add this method, replacing the Hello World method, to return all items added to the database,
   
@@ -101,7 +101,7 @@
         }
 
         _context.Articles.Add(new Article { Title = article.Title });
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(); 
 
         _logger.LogDebug("Finished save");
 
@@ -150,4 +150,4 @@ Repositories will encapsulate your database context and provide a place to put d
 - (optional) Implement another repository class that implements the same interface as the one you just created, but implement it to save the itmes to an in-memory collection. See how you can use DI to inject the interface, then specify the implementation in the DI configuration. You can change this configuration to switch from the im-memory storage to database storage. 
 
 
-Congratulations on completing the Entity Framework section! You can go on to the [Deployment section](04-Deploy) now.
+Congratulations on completing the Entity Framework section! You can go on to the [Deployment section](../04-Deploy/README.md) now.
