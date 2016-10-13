@@ -10,7 +10,7 @@ Take a look at the Dockerfile in the root's code in this section. This specifies
 
 Then you can create new containers based off this image, which we'll do in the next step. Note, your application code will be in this container. 
 
-For instructions on how to quickly get started with Docker if you don't have it installed and haven't used it, take a look at this article, [Getting Started with DOcker and .NET Core on OS X](https://www.excella.com/insights/getting-started-with-docker-and-net-core-on-os-x).
+For instructions on how to quickly get started with Docker if you don't have it installed and haven't used it, take a look at this article, [Getting Started with Docker and .NET Core on OS X](https://www.excella.com/insights/getting-started-with-docker-and-net-core-on-os-x).
 
 ## Run the container 
 
@@ -59,3 +59,5 @@ It is useful to log into your containers. To do that, use this:
   ```
   docker exec -ti <Container name> sh
   ```
+
+
