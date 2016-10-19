@@ -2,40 +2,39 @@
 
 ## Build the container (optional, you can skip to running the container to just get an environment started up)
 
-Take a look at the Dockerfile in the root's code in this section. This specifies what the container will have, and in this case, it's based on the latest public .NET Core image. Then it adds some configuration for ASP.NET.  
+Take a look at the Dockerfile in the root's code in this section. This specifies what the container will have, and in this case, it's based on the latest public .NET Core image. Then it adds some configuration for ASP.NET. You can build the ASP.NET Core container from the provided Dockerfile, following these steps: 
 
-You can build the ASP.NET Core container from your root app folder which will use the existing Dockerfile, using this command: 
-  ```
-  docker build -t <yourTag:YourAspNetImageName> .
-  ```
+1. Run ```docker build -t <yourTag:YourAspNetImageName> .```
 
-Then you can creae new containers based off this image. Note, your application code will be in this container. 
+2. See that your image was created correct from the build step above, by listing the images on your machine, by typing `docker images`. You should see it in the list.
 
-For instructions on how to quickly get started with Docker if you don't have it installed and haven't used it, take a look at this article, [Getting Started with DOcker and .NET Core on OS X](https://www.excella.com/insights/getting-started-with-docker-and-net-core-on-os-x).
+Then you can create new containers based off this image, which we'll do in the next step. Note, your application code will be in this container. 
+
+For instructions on how to quickly get started with Docker if you don't have it installed and haven't used it, take a look at this article, [Getting Started with Docker and .NET Core on OS X](https://www.excella.com/insights/getting-started-with-docker-and-net-core-on-os-x).
 
 ## Run the container 
 
-You can have your ASP.NET Core environment in a Docker container while you develop on your host machine. See these [instructions on the ASP.NET Core devlopment workflow with Docker](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/) for more information. For instructions on how to quickly get started with Docker if you don't have it installed and haven't used it, take a look at this article, [Getting Started with DOcker and .NET Core on OS X](https://www.excella.com/insights/getting-started-with-docker-and-net-core-on-os-x).
+You can have your ASP.NET Core environment in a Docker container while you develop on your host machine. Here is [an existing ASP.NET Core development environment Docker image](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/) which you can immediate run containers from.
 
-For now, you can run the container, specifying a port binding for listening, the current app folder to mount in the container, and the image name, using the following command. 
+For now, you can run the container you built or the one [mentioned on Docker Hub](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/), specifying a port binding for listening, the current app folder to mount in the container, and the image name, using the following command. 
+
+1. Go to your ASP.NET Core app's directory (or an empty directory for a new app)
 
   ```
   docker run -d -p 8080:5000 -v $(pwd):/app -t <yourTag:YourAspNetImageName>
   ```  
 
-So to try it: 
-
-1. Go to your ASP.NET Core app's directory
-
-1. Run a container from [a pre-made ASP.NET image from Docker Hub](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/) with this command:
+2. You could also just run [a pre-made ASP.NET image from Docker Hub](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/) with this command:
     
   ```
   docker run -d -p 5000:5000 -v $(pwd):/app -t wyntuition/aspnetcore-development-env
   ```
 
-Now you can code in your host environment using your IDE as usual, and the container will have any changes since it mounted your application directory. For more information about a Docker devlopment environmnet for ASP.NET Core, see the instructions on [this Docker Hub image](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/) page.
+Now you can code in your host environment using your IDE as usual, and the container will receive any file changes since your application directory is mounted into the container. 
 
 ## Docker Compose 
+
+You can use Docker Compose to spin up multiple containers at once, in order to create a multi-server environmnet. The most common example would be to spin up a container running the application, and a container running the database. 
 
 There is a `docker-compose.yml` file in the repo that use Docker Compose to spin up an ASP.NET Core container, and a postgreSQL container.
 
@@ -60,3 +59,5 @@ It is useful to log into your containers. To do that, use this:
   ```
   docker exec -ti <Container name> sh
   ```
+
+
