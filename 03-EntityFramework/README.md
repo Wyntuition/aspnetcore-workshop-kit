@@ -143,11 +143,13 @@ Also, note the log messages from the statements you added when saving an item.
   
 ## Add a repository 
 
-Repositories will encapsulate your database context and provide a place to put data access code. In this exercise, you will:
+Repositories will encapsulate your database context and provide a place to put data access code. In this exercise, you must:
 
-- Add a repository class for your context object (I recommend using a generic base repository when simple, and adding repositories specific to the aggregate roots when specific data access code is needed. This will prevent an explosion of similar repository code, such as duplicate add/update/etc code)
+- Add a base repository class for your common data operations. I recommend using a generic base repository when data operations are simple, and adding repositories specific to the aggregate roots when specific data access code is needed. This will prevent an explosion of similar repository code, such as duplicate add/update/etc code. Here we also add a concrete repo to actually implement to show this approach. 
 - Register the repository in the container so it can be injected with DI 
+- Change the `ArticlesContext` class to use the repository instead of the context object directly. 
 - (optional) Implement another repository class that implements the same interface as the one you just created, but implement it to save the itmes to an in-memory collection. See how you can use DI to inject the interface, then specify the implementation in the DI configuration. You can change this configuration to switch from the im-memory storage to database storage. 
 
+See the end source code in this section to see how it was done, as we do not have step-by-step instructions at this time. 
 
 Congratulations on completing the Entity Framework section! You can go on to the [Deployment section](../04-Deploy/README.md) now.
