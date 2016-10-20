@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Articles.Entities;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using ConsoleApplication.Infrastructure;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -12,22 +11,22 @@ namespace ConsoleApplication.Articles
     [Route("/api/[controller]")]
     public class ArticlesController : Controller
     {
-        private readonly ArticlesContext _context;
+        private readonly IArticlesRepository _articlesRepository;
         private readonly ILogger<ArticlesController> _logger; 
 
-        public ArticlesController(ArticlesContext context, ILogger<ArticlesController> logger)
+        public ArticlesController(IArticlesRepository articlesRepository, ILogger<ArticlesController> logger)
         {
-            _context = context;
+            _articlesRepository = articlesRepository;
             _logger = logger;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Article>> Get() => await _context.Set<Article>().ToListAsync();
+        public async Task<IEnumerable<Article>> Get() => await _articlesRepository.GetAllAsync();
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {
-            var article = await _context.Articles.SingleOrDefaultAsync(m => m.Id == id);
+            var article = await _articlesRepository.GetSingleAsync(id);
             if (article == null)
             {
                 return NotFound(); // This makes it return 404; otherwise it will return a 204 (no content) 
@@ -46,8 +45,8 @@ namespace ConsoleApplication.Articles
                 return BadRequest(ModelState);
             }
 
-            _context.Articles.Add(new Article { Title = article.Title });
-            await _context.SaveChangesAsync();
+            _articlesRepository.Add(new Article { Title = article.Title });
+            await _articlesRepository.SaveChangesAsync();
 
             _logger.LogDebug("Finished save");
 

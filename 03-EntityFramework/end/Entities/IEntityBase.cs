@@ -1,4 +1,4 @@
-namespace Articles.Entities
+namespace ConsoleApplication.Entities
 {
     public interface IEntityBase
     {

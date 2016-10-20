@@ -1,8 +1,9 @@
+using ConsoleApplication.Entities;
+
 namespace Articles.Entities
 {
-    public class Article : IEntityBase
+    public class Article : EntityBase
     {
-        public int Id { get; set; }
         public string Title { get; set; }
     }
 }
