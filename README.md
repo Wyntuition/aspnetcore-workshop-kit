@@ -2,11 +2,11 @@
 
 This workshop goes through creating an ASP.NET Core application from scratch, so it is easier to see what all the parts are and what they do. We will use the new, platform-agnostic tools - the .NET Core CLI and VS Code so we can see the cross-platform experience. This can be conducted as a group workshop, or done individually. 
 
-First, there will be an overview presentation of .NET Core, and then the architecture of ASP.NET Core. (Workshop presenters: there is a slide deck included).  
+You can go through it yourself or facilitate it in in a ~4 hour workshop. 
 
-Then it walks through coding up a basic, API-based app, in order to understand the technology and new development process. If there's time, we can deploy to the cloud, or build a container and development and deploy in that.
+There is a slide deck included for an an overview of .NET Core and then the architecture of ASP.NET Core. Then it walks through coding up a basic, API-based app, in order to understand the technology and new development process.
 
-I recommend using Docker for the .NET Core development environment so you can build and run the app in a container. This way, you'll get to try the ASP.NET Core development workflow with Docker. You can skip using Docker if you'd like; you'll still be fine if your .NET Core SDK is working and the latest version, and there is nothing specific to Docker in these app building instructions. The operations are practically the same no matter which approach you are using. You can use this [Docker image of an ASP.NET Core development environmnet](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/), and there are instructions for starting the container.
+I recommend using Docker for the .NET Core development environment so you can build and run the app in a container. This way, you'll get to try the ASP.NET Core development workflow with Docker. You can skip using Docker if you'd like; you'll still be fine if your .NET Core SDK is working and the latest version, and there is nothing specific to Docker in these app building instructions. The operations are practically the same no matter which approach you are using. You can use this [Docker image of an ASP.NET Core development environmnet](https://hub.docker.com/r/wyntuition/aspnetcore-development-env/), and there are instructions for starting the container. There is an optional section on creating and running a a container to use for ASP.NET Core development. Go through that section after you have a basic app running if you want to containerize it. 
 
 When finished, you should have a general understanding of .NET Core, ASP.NET Core and how to build basic ASP.NET Core apps.
 
