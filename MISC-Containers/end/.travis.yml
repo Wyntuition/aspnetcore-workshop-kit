@@ -1,0 +1,14 @@
+language: csharp
+dist: trusty
+mono: none
+dotnet: 1.0.0-preview2-003121
+
+sudo: required
+services:
+  - docker
+  - postgresql
+before_install:
+  - cd MISC-Containers/end/
+  - docker-compose build
+  - docker-compose up -d && docker ps
+
