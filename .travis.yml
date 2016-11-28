@@ -9,6 +9,7 @@ services:
   - postgresql
 before_install:
   - cd MISC-Containers/end/
+script:  
   - docker-compose build
   - docker-compose up -d && docker ps
 
