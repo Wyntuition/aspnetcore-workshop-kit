@@ -1,10 +1,7 @@
 # Describes how to build a Docker image. Each instruction creates a new layer in the image. 
 
 # base image
-# This has the SDK installed; I don't think it used to. 
-#FROM microsoft/dotnet:latest
-# I am not sure what is unique to this image vs the one above
-FROM microsoft/dotnet:1.0.0-preview2-sdk
+FROM microsoft/dotnet:latest
 # This is good for deployed apps as it will be minimal, and no SDK 
 #FROM microsoft/dotnet:1.0.1-core 
 
@@ -12,9 +9,9 @@ FROM microsoft/dotnet:1.0.0-preview2-sdk
 EXPOSE 5000/tcp
 ENV ASPNETCORE_URLS http://*:5000
 
-# copy files from current directory to target on container - i.e. if you want your app in the container and want to deploy it
-# COPY . /sampleAspnetCoreWebApiApp 
-# WORKDIR /sampleAspnetCoreWebApiApp
+# copy files from current directory to target on image 
+COPY . /sampleAspnetCoreWebApiApp 
+WORKDIR /sampleAspnetCoreWebApiApp
 
 RUN ["dotnet", "restore"]
 RUN ["dotnet", "build"]

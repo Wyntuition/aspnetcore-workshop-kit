@@ -3,15 +3,15 @@ version: '2'
 services:
 
   web:
-    container_name: 'aspnetcore_run'
-    image: 'wyntuition/aspnetcore-development-env'
+    container_name: 'aspnetcore'
+    image: 'aspnetcore-development-env'
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
       - .:/app
     ports:
-     - "8080:5000"
+     - "5000:5000"
     depends_on:
      - "postgres"
     networks:
