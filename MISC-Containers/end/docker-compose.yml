@@ -24,6 +24,8 @@ services:
       POSTGRES_PASSWORD: password
     networks:
       - aspnetcoreapp-network
+    #volumes:
+    #- /data/pgsql:/var/lib/postgresql
 
 networks:
   aspnetcoreapp-network:
