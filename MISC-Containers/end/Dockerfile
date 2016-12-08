@@ -1,30 +1,33 @@
 # Describes how to build a Docker image. Each instruction creates a new layer in the image. 
 
-# base image
-FROM microsoft/dotnet:latest
+# base image - avoid :lastest as it can upgrade versions automatically 
+FROM microsoft/dotnet:1.0.1-sdk-projectjson
 # This is good for deployed apps as it will be minimal, and no SDK 
-#FROM microsoft/dotnet:1.0.1-core 
+# FROM microsoft/dotnet:1.0.1-core 
 
 # set up network
 EXPOSE 5000/tcp
 ENV ASPNETCORE_URLS http://*:5000
 
 # copy files from current directory to target on image 
-COPY . /sampleAspnetCoreWebApiApp 
-WORKDIR /sampleAspnetCoreWebApiApp
+COPY . /app 
+WORKDIR /app
 
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
-ENTRYPOINT ["dotnet", "watch", "run"]
+# RUN ["dotnet", "restore"]
+# RUN ["dotnet", "build"]
+# ENTRYPOINT ["dotnet", "watch", "run"]
 
+
+
+#-------------------------------------------------------------------------------------------------
 # USAGE - build image, and expose ports, the current app folder: 
-# 		docker build -t mydemos:aspnetcorehelloworld .
-#		docker run -d -p 8080:5000 -v $(pwd):/app -t mydemos:aspnetcorehelloworld 
+# 		docker build -t mydemos:aspnet-manual .
+#		docker run -d -p 5000:5000 -v $(pwd):/app -t mydemos:aspnet-manual 
 
 # REFERENCE: https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/product/Dockerfile
 
 
-#------------------------
+#-------------------------------------------------------------------------------------------------
 # FOR MULTIPLE CONTAINERS
 # docker build -f aspnetcore.development.dockerfile -t [yourDockerHubID]/dotnet:1.0.0 
 

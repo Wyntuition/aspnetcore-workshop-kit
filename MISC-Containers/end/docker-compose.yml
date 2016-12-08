@@ -10,6 +10,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/app
+    entrypoint: ["sh", "./go.sh"] 
     ports:
      - "5000:5000"
     depends_on:
@@ -24,9 +25,12 @@ services:
       POSTGRES_PASSWORD: password
     networks:
       - aspnetcoreapp-network
-    #volumes:
-    #- /data/pgsql:/var/lib/postgresql
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
 
 networks:
   aspnetcoreapp-network:
     driver: bridge
+
+volumes:
+ postgres: {}
