@@ -3,11 +3,11 @@ version: '2'
 services:
 
   web:
-    container_name: 'aspnetcore'
-    image: 'aspnetcore-development-env'
+    container_name: 'aspnetcore-from-compose'
+    image: 'aspnetcore-from-compose'
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.EntrypointScript
     volumes:
       - .:/app
     entrypoint: ["sh", "./go.sh"] 
@@ -19,7 +19,7 @@ services:
       - aspnetcoreapp-network
 
   postgres:
-    container_name: 'postgres'
+    container_name: 'postgres-from-compose'
     image: postgres
     environment:
       POSTGRES_PASSWORD: password

@@ -19,6 +19,12 @@ namespace ConsoleApplication.Articles
             _logger = logger;
         }
 
+        [Route("hello")]
+        public IActionResult GetHelloWorld()
+        {
+            return Ok("Hello world, from ASP.NET Core in a container!");
+        }
+
         [HttpGet]
         public async Task<IEnumerable<Article>> Get() => await _articlesRepository.GetAllAsync();
 

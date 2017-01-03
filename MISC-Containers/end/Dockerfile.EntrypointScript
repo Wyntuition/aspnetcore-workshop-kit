@@ -13,22 +13,24 @@ ENV ASPNETCORE_URLS http://*:5000
 COPY . /app 
 WORKDIR /app
 
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
-ENTRYPOINT ["dotnet", "watch", "run"]
+# RUN ["dotnet", "restore"]
+# RUN ["dotnet", "build"]
+# ENTRYPOINT ["dotnet", "watch", "run"]
 
 
 
 #-------------------------------------------------------------------------------------------------
 # USAGE - build image, and expose ports, the current app folder: 
-# 		docker build -t aspnet-demo .
-#		docker run -it -p 5000:5000 -v $(pwd):/app -t aspnet-demo 
+
+# 		docker build -t mydemos:aspnet-manual .
+#		docker run -d -p 5000:5000 -v $(pwd):/app -t mydemos:aspnet-manual 
 
 # REFERENCE: https://github.com/aspnet/aspnet-docker/blob/master/1.0.1/jessie/product/Dockerfile
 
 
 #-------------------------------------------------------------------------------------------------
 # FOR MULTIPLE CONTAINERS
+
 # docker build -f aspnetcore.development.dockerfile -t [yourDockerHubID]/dotnet:1.0.0 
 
 # Option 1
@@ -36,6 +38,7 @@ ENTRYPOINT ["dotnet", "watch", "run"]
  
 # docker run -d --name my-postgres -e POSTGRES_PASSWORD=password postgres
 # docker run -d -p 5000:5000 --link my-postgres:postgres [yourDockerHubID]/dotnet:1.0.0
+
 
 # Option 2: Create a custom bridge network and add containers into it
 
