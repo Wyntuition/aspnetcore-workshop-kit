@@ -19,6 +19,9 @@ ENTRYPOINT ["dotnet", "watch", "run"]
 
 
 
+
+# REFERENCE: 
+
 #-------------------------------------------------------------------------------------------------
 # USAGE - build image, and expose ports, the current app folder: 
 # 		docker build -t aspnet-demo .
