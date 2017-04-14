@@ -2,6 +2,22 @@
 
 If you would like to use Docker in the devleopment process of your ASP.NET Core app, you can do so easily and it's great practice. You can build your own container to use, or use an existing one. Once you have a container running with the ASP.NET Core environment mounted to your souce code, you can do the workshop using Docker to build and run the app. 
 
+Overview:
+
+Tutorial Part I: Creating and communicating between containers
+
+- Create a Dockerfile for the container, for your app
+- Build and run the container
+- Run a database container to use
+- Talk to your database container from your app container via Docker networks
+
+Tutorial Part II: Compose and the full workflow 
+
+- Create a Compose file to manage multiple containers, and container startup settings / environment variables
+- Add the database container
+- Create a hosted volume for the database
+
+
 ## Build the container (optional, you can skip to running the container to just get an environment started up)
 
 Take a look at the Dockerfile in the root's code in this section. This specifies what the container will have, and in this case, it's based on the latest public .NET Core image. Then it adds some configuration for ASP.NET. You can build the ASP.NET Core container from the provided Dockerfile, following these steps: 
